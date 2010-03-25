@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
-     ".gitignore",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
@@ -26,6 +25,7 @@ Gem::Specification.new do |s|
      "lib/ploymorphic_wuid.rb",
      "lib/wuid/ploymorphic_module.rb",
      "lib/wuid/wuid.rb",
+     "pkg/ploymorphic_wuid-0.1.0.gem",
      "ploymorphic_wuid.gemspec",
      "test/helper.rb",
      "test/test_ploymorphic_wuid.rb"
