@@ -7,9 +7,7 @@ module PloymorphicModule
   module ClassMethods
 
     def acts_as_wuid options={}
-      #TODO auto set wuid with conditional hook
       has_one :wuid, :as => :wuidable, :dependent => :destroy
-      attr_accessor :refs if options[:tree]
       include PloymorphicModule::InstanceMethods
     end
 
@@ -18,7 +16,7 @@ module PloymorphicModule
   module InstanceMethods
 
     def wid
-      (self.wuid.parent) ? self.parent.wid : self.wuid.id
+      self.wuid.id
     end
 
     def after_create
@@ -27,7 +25,7 @@ module PloymorphicModule
     end
 
     def create_wuid
-      wuid.create :reference_to => refs
+      wuid.create
     end
 
   end

@@ -10,8 +10,6 @@ begin
     gem.description = %Q{ This is a gem to generate an unique id in your application world.}
     gem.email = "tim.rubist@gmail.com"
     gem.homepage = "http://github.com/tteng/ploymorphic_wuid"
-    gem.add_development_dependency "acts_as_tree", ">= 0.1.1"
-    gem.add_runtime_dependency "acts_as_tree", ">= 0.1.1"
     gem.authors = ["tim.teng"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
