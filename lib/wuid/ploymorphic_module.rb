@@ -6,9 +6,17 @@ module PloymorphicModule
 
   module ClassMethods
 
-    def acts_as_wuid
+    def acts_as_wuid options={}
+      #TODO auto set wuid with conditional hook
       has_one :wuid, :as => :wuidable, :dependent => :destroy
-      include PloymorphicModule::InstanceMethods
+      if options[:acts_as_tree]
+        Wuid.class_eval do
+          acts_as_tree :foreign_key => "reference_to"
+        end
+        include PloymorphicModule::AdvancedInstanceMethods
+      else
+        include PloymorphicModule::InstanceMethods
+      end
     end
 
   end
@@ -25,11 +33,22 @@ module PloymorphicModule
     end
  
     def wid
-      wuid.id
+      self.wuid.id
+    end
+
+  end
+
+  module AdvancedInstanceMethods
+
+    def wid
+      (self.respond_to?(:reference_to) && self.parent) ? self.parent.wid : self.wuid.id
+    end
+
+    def wid= id
+      w = self.wuild.build :reference_to => id
+      w.save 
     end
 
   end
 
 end
-
-

@@ -13,6 +13,7 @@ class CreateWuids < ActiveRecord::Migration
     create_table :wuids do |t|
       t.integer :wuidable_id
       t.string  :wuidable_type
+      t.integer :reference_to #optional
       t.timestamps
     end
   end
@@ -31,7 +32,7 @@ end
  in your model
 
    class Book < ActiveRecord::Base
-     acts_as_wuid
+     acts_as_wuid 
    end
  
   that's all  
@@ -45,6 +46,10 @@ end
   get an object's wuid:
  
     obj.wid
+
+== advantage
+  
+   acts_as_wuid :acts_as_tree => true
 
 == Note on Patches/Pull Requests
  
