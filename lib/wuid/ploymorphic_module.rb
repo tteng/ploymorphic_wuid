@@ -44,7 +44,7 @@ module PloymorphicModule
       (self.respond_to?(:reference_to) && self.parent) ? self.parent.wid : self.wuid.id
     end
 
-    def wid= id
+    def wid= id=nil
       w = self.wuild.build :reference_to => id
       w.save 
     end
