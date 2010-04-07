@@ -47,9 +47,6 @@ end
  
     obj.wid
 
-== advantage
-  
-   acts_as_wuid :acts_as_tree => true
 
 == Note on Patches/Pull Requests
  
