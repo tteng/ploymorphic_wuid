@@ -7,8 +7,10 @@ module PloymorphicModule
   module ClassMethods
 
     def acts_as_wuid options={}
-      has_one :wuid, :as => :wuidable, :dependent => :destroy
-      include PloymorphicModule::InstanceMethods
+      default_options = { :as => :wuidable, :dependent => :destroy }
+      default_options.merge!(options) unless options.empty?
+      has_one :wuid, default_options 
+      PloymorphicModule::InstanceMethods
     end
 
   end
@@ -16,7 +18,7 @@ module PloymorphicModule
   module InstanceMethods
 
     def wid
-      self.wuid.id
+      self.wuid.id rescue nil
     end
 
     def after_create
