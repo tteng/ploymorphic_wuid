@@ -10,7 +10,7 @@ module PloymorphicModule
       default_options = { :as => :wuidable, :dependent => :destroy }
       default_options.merge!(options) unless options.empty?
       has_one :wuid, default_options 
-      PloymorphicModule::InstanceMethods
+      include PloymorphicModule::InstanceMethods
     end
 
   end
