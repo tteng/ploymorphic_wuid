@@ -29,8 +29,9 @@ module PloymorphicModule
     def create_wuid
       begin 
         wuid.create!
-      #rescue ActiveRecord::StatementInvalid => e 
-      #  retry
+      rescue ActiveRecord::StatementInvalid => e 
+        logger.error " create wuid faild with #{e.message}"
+        retry
       end
     end
 

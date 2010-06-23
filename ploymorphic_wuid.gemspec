@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ploymorphic_wuid}
-  s.version = "0.4.3"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["tim.teng"]
-  s.date = %q{2010-04-28}
+  s.date = %q{2010-06-23}
   s.description = %q{ This is a gem to generate an unique id in your application world.}
   s.email = %q{tim.rubist@gmail.com}
   s.extra_rdoc_files = [
@@ -24,7 +24,9 @@ Gem::Specification.new do |s|
      "VERSION",
      "lib/ploymorphic_wuid.rb",
      "lib/wuid/ploymorphic_module.rb",
+     "lib/wuid/rand_gen.rb",
      "lib/wuid/wuid.rb",
+     "pkg/ploymorphic_wuid-0.5.0.gem",
      "ploymorphic_wuid.gemspec",
      "test/helper.rb",
      "test/test_ploymorphic_wuid.rb"
