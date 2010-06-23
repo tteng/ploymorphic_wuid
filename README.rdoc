@@ -13,9 +13,12 @@ class CreateWuids < ActiveRecord::Migration
     create_table :wuids do |t|
       t.integer :wuidable_id
       t.string  :wuidable_type
+      t.string  :rand_token
       t.integer :reference_to #optional
       t.timestamps
     end
+
+    add_index :wuids, :rand_token, :unique => true, :name => 'token_index'
   end
 
   def self.down
