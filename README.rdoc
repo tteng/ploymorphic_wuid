@@ -46,6 +46,8 @@ end
 
     obj = Wuid.find(params[:wuid]).wuidable
 
+  now you can both pass in an id or an rand_token to get the corresponding object
+
   get an object's wuid:
  
     obj.wid
