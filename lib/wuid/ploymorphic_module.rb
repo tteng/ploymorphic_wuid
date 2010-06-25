@@ -18,7 +18,7 @@ module PloymorphicModule
   module InstanceMethods
 
     def wid
-      self.wuid.id rescue nil
+      self.wuid.rand_token rescue nil
     end
 
     def after_create

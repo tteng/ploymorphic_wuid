@@ -24,14 +24,16 @@ class Wuid < ActiveRecord::Base
         return args.first if expects_array && args.first.empty?
         case args.size
           when 0
-            raise RecordNotFound, "Couldn't find #{name} without an ID"
+            raise "Couldn't find #{name} without an ID"
           when 1
             if args[0].is_a?(Integer) || (args[0].is_a?(String) && args[0] =~ /^\d{1,}$/)
-              super
+              raise "Don't support simple digest id any more"
+              #super
             else
               if args[0].is_a?(Array)
                 if args[0].all?{|i| i.is_a?(Integer)} ||  args[0].all?{|i| i=~ /^\d{1,}$/}
-                  super
+                  raise "Don't support simple digest id any more"
+                  #super
                 else
                   origin_find(:all, :conditions => ["rand_token in (?)", args[0]])
                 end
