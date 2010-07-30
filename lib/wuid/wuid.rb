@@ -1,9 +1,11 @@
 class Wuid < ActiveRecord::Base
 
+  RAND_TOKEN_SIZE = 11
+
   belongs_to :wuidable, :polymorphic => true
 
   before_validation do |record|
-    record.rand_token = RandGen.generate
+    record.rand_token = RandGen.generate(RAND_TOKEN_SIZE)
   end
 
   validates_uniqueness_of :rand_token
@@ -26,9 +28,8 @@ class Wuid < ActiveRecord::Base
           when 0
             raise "Couldn't find #{name} without an ID"
           when 1
-            if args[0].is_a?(Integer) || (args[0].is_a?(String) && args[0] =~ /^\d{1,}$/)
-              raise "Don't support simple digest id any more"
-              #super
+            if args[0].to_s.size != RAND_TOKEN_SIZE
+              raise "Wuid format error"
             else
               if args[0].is_a?(Array)
                 if args[0].all?{|i| i.is_a?(Integer)} ||  args[0].all?{|i| i=~ /^\d{1,}$/}
